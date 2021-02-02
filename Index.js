@@ -4,10 +4,10 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const employees = [];
+const employeesArray = [];
 
 //Prompt started onload
-const initialPrompt = () => {
+const initialPrompt = (data) => {
     return inquirer.prompt([
         {
         tpye: 'input',
@@ -34,12 +34,12 @@ const initialPrompt = () => {
         const name = data.name
         const id = data.id
         const email = data.email
-        const officeNumber = data.officeNumber
+        const lastField = data.lastField
         endPrompt();
     })
 };
 
-const engineerOption = () => {
+const engineerOption = (data) => {
     return inquirer.prompt([
         {
         tpye: 'input',
@@ -66,12 +66,12 @@ const engineerOption = () => {
         const name = data.name
         const id = data.id
         const email = data.email
-        const githubUsername = data.githubUsername
+        const lastField = data.lastField
         endPrompt();
     })
 };
 
-const internOption = () => {
+const internOption = (data) => {
     return inquirer.prompt([
         {
         tpye: 'input',
@@ -90,7 +90,7 @@ const internOption = () => {
         },
         {
         type: 'input',
-        name: 'school',
+        name: 'last field',
         message: "Enter the name of the intern's school."        
         }
     ])
@@ -98,10 +98,9 @@ const internOption = () => {
         const name = data.name
         const id = data.id
         const email = data.email
-        const school = data.school
+        const lastField = data.lastField
         endPrompt();
-        })    
-    
+    })
 };
 
 
@@ -123,24 +122,13 @@ function endPrompt() {
                 internOption();
                 break;
             case "Complete team":
-                completeTeam();
+                console.log(`
+                ========================================
+                Your team has been generated. Thank you!
+                ========================================`);
                 break;
         }})
-    
 }
-
-
-
-
-function completeTeam () {
-    console.log(`
-    ========================================
-    Your team has been generated. Thank you!
-    ========================================`);
-    //FUNCTION WHERE THE HTML WILL BE GENERATED
-    
-}
-
 
 initialPrompt()
 
