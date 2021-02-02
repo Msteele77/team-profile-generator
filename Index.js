@@ -6,6 +6,7 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const employees = [];
 
+//Prompt started onload
 const initialPrompt = () => {
     return inquirer.prompt([
         {
@@ -27,15 +28,15 @@ const initialPrompt = () => {
         type: 'input',
         name: 'officeNumber',
         message: "Enter the team member's office number."
-        },
-        {
-        type: 'list',
-        name: 'role',
-        message: "Please choose the type of employee you want to add, or choose to finish builing your team.",
-        choices: ["Add an engineer", "Add an intern", "Complete team"
-            ]
         }
     ])
+    .then(function(data) {
+        const name = data.name
+        const id = data.id
+        const email = data.email
+        const officeNumber = data.officeNumber
+        endPrompt();
+    })
 };
 
 const engineerOption = () => {
@@ -57,16 +58,17 @@ const engineerOption = () => {
         },
         {
         type: 'input',
-        name: 'officeNumber',
+        name: 'githubUsername',
         message: "Enter the engineer's Github Username."
-        },
-        {
-        type: 'list',
-        name: 'role',
-        message: "Would you like to add another employee or complete your team?",
-        choices: ["Add an engineer", "Add an intern", "Complete team"]
         }
     ])
+    .then(function(data) {
+        const name = data.name
+        const id = data.id
+        const email = data.email
+        const githubUsername = data.githubUsername
+        endPrompt();
+    })
 };
 
 const internOption = () => {
@@ -88,9 +90,23 @@ const internOption = () => {
         },
         {
         type: 'input',
-        name: 'officeNumber',
+        name: 'school',
         message: "Enter the name of the intern's school."        
-        },
+        }
+    ])
+    .then(function(data) {
+        const name = data.name
+        const id = data.id
+        const email = data.email
+        const school = data.school
+        endPrompt();
+        })    
+    
+};
+
+
+function endPrompt() {
+    inquirer.prompt([
         {
         type: 'list',
         name: 'role',
@@ -98,15 +114,23 @@ const internOption = () => {
         choices: ["Add an engineer", "Add an intern", "Complete team"]
         }
     ])
-};
-
-const mainMenu = () => {
-    console.log(`
-    =========
-    MAIN MENU
-    =========
-    `);
+        .then(data => {
+        switch (data.role) {
+            case "Add an engineer":
+                engineerOption();
+                break;
+            case "Add an intern":
+                internOption();
+                break;
+            case "Complete team":
+                completeTeam();
+                break;
+        }})
+    
 }
+
+
+
 
 function completeTeam () {
     console.log(`
@@ -118,20 +142,8 @@ function completeTeam () {
 }
 
 
-
 initialPrompt()
-.then(data => {
-    switch (data.role) {
-        case "Add an engineer":
-            engineerOption();
-            break;
-        case "Add an intern":
-            internOption();
-            break;
-        case "Complete team":
-            completeTeam();
-            break;
-}})
+
 
 
 
