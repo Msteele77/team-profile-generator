@@ -73,7 +73,11 @@ const engineerOption = (data) => {
        
 
         
-           
+               //this.github = githubInfo;
+       // const githubInfo = {
+       //     getGithubUsername(githubUsername) {
+      //  axios.get("https://api.github.com/users/" + githubUsername)
+         //   }}
             
 
 

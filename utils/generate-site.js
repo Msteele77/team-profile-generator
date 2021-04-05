@@ -9,7 +9,7 @@ const manager = (data) => {
             <li class="list-group-item">Role: ${data.getRole()}</li>
             <li class="list-group-item">ID: ${data.getId()}</li>
             <li class="list-group-item">Email: ${data.getEmail()}</li>
-            <li class="list-group-item">Office Number:${data.getOfficeNumber()}</li>
+            <li class="list-group-item">Office Number: ${data.getOfficeNumber()}</li>
         </ul>
     </div>
     </div>`
@@ -26,7 +26,7 @@ const engineer = (data) => {
             <li class="list-group-item">Role: ${data.getRole()}</li>
             <li class="list-group-item">ID: ${data.getId()}</li>
             <li class="list-group-item">Email: ${data.getEmail()}</li>
-            <li class="list-group-item">Github Username: [${data.githubInfo()}] (https://github.com/${data.githubUsername})</li>
+            <li class="list-group-item">Github Username: ${data.getGithub()}</li>
         </ul>
     </div>
     </div>`
