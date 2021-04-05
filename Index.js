@@ -5,6 +5,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const employeesArray = [];
+const generateCards = require("./utils/generate-site");
 
 //Prompt started onload
 const initialPrompt = (data) => {
@@ -31,10 +32,8 @@ const initialPrompt = (data) => {
         }
     ])
     .then(function(data) {
-        const name = data.name
-        const id = data.id
-        const email = data.email
-        const lastField = data.lastField
+        const employee = new Manager(data.name, data.id, data.email, data.officeNumber)
+        employeesArray.push(employee)
         endPrompt();
     })
 };
@@ -63,10 +62,8 @@ const engineerOption = (data) => {
         }
     ])
     .then(function(data) {
-        const name = data.name
-        const id = data.id
-        const email = data.email
-        const lastField = data.lastField
+        const engineer = new Engineer(data.name, data.id, data.email, data.githubUsername)
+        employeesArray.push(engineer)
         endPrompt();
     })
 };
@@ -90,15 +87,13 @@ const internOption = (data) => {
         },
         {
         type: 'input',
-        name: 'last field',
+        name: 'school',
         message: "Enter the name of the intern's school."        
         }
     ])
     .then(function(data) {
-        const name = data.name
-        const id = data.id
-        const email = data.email
-        const lastField = data.lastField
+        const intern = new Intern(data.name, data.id, data.email, data.school)
+        employeesArray.push(intern)
         endPrompt();
     })
 };
@@ -122,10 +117,14 @@ function endPrompt() {
                 internOption();
                 break;
             case "Complete team":
-                console.log(`
+                fs.writeFile("./dist/index.html", generateCards(employeesArray), (err) => {
+                    console.log(err);
+                    console.log(`
                 ========================================
                 Your team has been generated. Thank you!
                 ========================================`);
+                })
+                
                 break;
         }})
 }
