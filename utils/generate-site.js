@@ -6,10 +6,10 @@ const manager = (data) => {
         ${data.getName()}
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${data.getRole()}</li>
-            <li class="list-group-item">${data.getId()}</li>
-            <li class="list-group-item">${data.getEmail()}</li>
-            <li class="list-group-item">${data.getOfficeNumber()}</li>
+            <li class="list-group-item">Role: ${data.getRole()}</li>
+            <li class="list-group-item">ID: ${data.getId()}</li>
+            <li class="list-group-item">Email: ${data.getEmail()}</li>
+            <li class="list-group-item">Office Number:${data.getOfficeNumber()}</li>
         </ul>
     </div>
     </div>`
@@ -23,10 +23,10 @@ const engineer = (data) => {
         ${data.getName()}
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${data.getRole()}</li>
-            <li class="list-group-item">${data.getId()}</li>
-            <li class="list-group-item">${data.getEmail()}</li>
-            <li class="list-group-item">${data.getGithub()}</li>
+            <li class="list-group-item">Role: ${data.getRole()}</li>
+            <li class="list-group-item">ID: ${data.getId()}</li>
+            <li class="list-group-item">Email: ${data.getEmail()}</li>
+            <li class="list-group-item">Github Username: [${data.githubInfo()}] (https://github.com/${data.githubUsername})</li>
         </ul>
     </div>
     </div>`
@@ -40,10 +40,10 @@ const intern = (data) => {
         ${data.getName()}
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${data.getRole()}</li>
-            <li class="list-group-item">${data.getId()}</li>
-            <li class="list-group-item">${data.getEmail()}</li>
-            <li class="list-group-item">${data.getSchool()}</li>
+            <li class="list-group-item">Role: ${data.getRole()}</li>
+            <li class="list-group-item">ID: ${data.getId()}</li>
+            <li class="list-group-item">Email: ${data.getEmail()}</li>
+            <li class="list-group-item">School: ${data.getSchool()}</li>
         </ul>
     </div>
     </div>`

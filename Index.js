@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require("fs");
+const axios = require("axios");
 
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -60,12 +61,27 @@ const engineerOption = (data) => {
         name: 'githubUsername',
         message: "Enter the engineer's Github Username."
         }
+        
     ])
+
+
+
+    
     .then(function(data) {
+
+        
+       
+
+        
+           
+            
+
+
+
         const engineer = new Engineer(data.name, data.id, data.email, data.githubUsername)
         employeesArray.push(engineer)
         endPrompt();
-    })
+        })
 };
 
 const internOption = (data) => {
@@ -118,7 +134,9 @@ function endPrompt() {
                 break;
             case "Complete team":
                 fs.writeFile("./dist/index.html", generateCards(employeesArray), (err) => {
-                    console.log(err);
+                    if(err) {
+                        console.log(err);
+                    };
                     console.log(`
                 ========================================
                 Your team has been generated. Thank you!
@@ -128,6 +146,12 @@ function endPrompt() {
                 break;
         }})
 }
+
+
+
+
+
+
 
 initialPrompt()
 
