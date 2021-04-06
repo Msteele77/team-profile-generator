@@ -157,7 +157,7 @@ function endPrompt() {
 
 
 
-initialPrompt()
+initialPrompt();
 
 
 
